@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image with Google Form and Upload Section</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background-color: #111;
+      font-family: Arial, sans-serif;
+      display: flex;
+    }
+
+    /* Left side */
+    .left-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;   /* Horizontally center */
+      align-items: center;       /* Vertically center */
+    }
+
+    .left-section img {
+      width: 300px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .left-section img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Right side */
+    .right-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .upload-container {
+      background-color: #222;
+      border: 2px dashed #555;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      width: 300px;
+    }
+
+    .upload-container img {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .upload-container button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .upload-container button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Left Section -->
+  <div class="left-section">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSelVb1eQDkb7DFR5s1RAe_dnnoxfN1oVM5tHR231oycTqTY_g/viewform?usp=dialog" > <img src="delhi.jpeg" ></a>
+    </a>
+  </div>
+
+  <!-- Right Section -->
+  <div class="right-section">
+    <div class="upload-container">
+      <h3>Upload Your Photo</h3>
+      <button onclick="alert('File Picker Open')">Choose File</button>
+      <img src="agra.jpeg" alt="Uploaded Preview">
+      
+    </div>
+  </div>
+
+</body>
+</html>

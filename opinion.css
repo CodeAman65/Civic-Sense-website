@@ -1,0 +1,159 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f9f9f9;
+  color: #222;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar .logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #004aad;
+}
+
+.navbar nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.navbar nav a.active,
+.navbar nav a:hover {
+  color: #004aad;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 250px;
+  background: url("opinion-bg.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-text {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-text h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  animation: fadeInDown 1.2s ease;
+}
+
+.hero-text p {
+  font-size: 18px;
+  animation: fadeInUp 1.2s ease;
+}
+
+/* Opinion Section */
+.opinion-section {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  animation: fadeIn 1.5s ease;
+}
+
+.opinion-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #004aad;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin-top: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+form textarea {
+  resize: vertical;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  min-height: 60px;
+  transition: border 0.3s;
+}
+
+form textarea:focus {
+  border-color: #004aad;
+  outline: none;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px;
+  background: #004aad;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background: #00337f;
+  transform: scale(1.05);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 15px;
+  background: #004aad;
+  color: white;
+  margin-top: 30px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeInDown {
+  from {opacity: 0; transform: translateY(-30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes fadeInUp {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}

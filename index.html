@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>CivicSense — Demo Clone (HTML/CSS/JS)</title>
+<meta name="description" content="Demo layout inspired by a civic news site. Replace content and images with your own." />
+<link rel="icon" href="data:,">
+<style>
+  /* Reset-ish */
+  :root{
+    --accent:#0b5cff;
+    --muted:#6b7280;
+    --bg:#f7f7fb;
+    --card:#ffffff;
+    --maxw:1200px;
+    --radius:12px;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:#111827;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.45;
+  }
+
+  .container{
+    max-width:var(--maxw);
+    margin:0 auto;
+    padding:20px;
+  }
+
+  /* Header / Nav */
+  header{
+    background:linear-gradient(90deg, rgba(11,92,255,0.06), rgba(11,92,255,0.02));
+    border-bottom:1px solid rgba(15,23,42,0.04);
+    position:sticky;
+    top:0;
+    z-index:40;
+    backdrop-filter: blur(6px);
+  }
+  .topbar{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:14px 20px;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    color:inherit;
+  }
+  .logo{
+    width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#7c3aed);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:20px;
+  }
+  nav{margin-left:auto; display:flex; align-items:center; gap:12px;}
+  nav a{ text-decoration:none; color:var(--muted); padding:8px 10px; border-radius:8px; font-weight:600; font-size:14px;}
+  nav a:hover{color:var(--accent); background:rgba(11,92,255,0.06)}
+  .cta{
+    background:var(--accent); color:white; padding:8px 12px; border-radius:10px; font-weight:700; text-decoration:none;
+  }
+
+  /* Mobile */
+  .mobile-toggle{display:none; border:0; background:transparent; font-size:22px; margin-left:8px;}
+  @media (max-width:900px){
+    nav{display:none}
+    .mobile-toggle{display:inline-flex}
+  }
+
+  /* Hero */
+  .hero{
+    margin-top:18px;
+    display:grid;
+    grid-template-columns: 1fr 320px;
+    gap:22px;
+    align-items:start;
+  }
+  .hero-left{
+    background:linear-gradient(180deg, rgba(255,255,255,0.75), rgba(255,255,255,0.6));
+    padding:20px;
+    border-radius:var(--radius);
+    box-shadow: 0 6px 20px rgba(14,20,35,0.06);
+    position:relative;
+  }
+  .hero-image{
+    height:260px;
+    border-radius:10px;
+    background-size:cover;
+    background-position:center;
+    margin-bottom:14px;
+    overflow:hidden;
+  }
+  .eyebrow{color:var(--accent); font-weight:700; font-size:13px;}
+  .h1{font-size:26px; margin:4px 0 8px; font-weight:800;}
+  .meta{color:var(--muted); font-size:13px;}
+
+  .hero-right{
+    padding:18px;
+    border-radius:var(--radius);
+    background:linear-gradient(180deg,#fff,#fbfdff);
+    box-shadow: 0 6px 20px rgba(14,20,35,0.04);
+  }
+  .subscribe input, .subscribe button{
+    width:100%; padding:10px; border-radius:10px; border:1px solid rgba(15,23,42,0.06); font-size:14px;
+  }
+  .subscribe button{ margin-top:8px; background:var(--accent); color:white; border:0; font-weight:700; cursor:pointer; }
+
+  /* Grid with sidebar */
+  .main{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns: 1fr 320px;
+    gap:22px;
+  }
+
+  .cards{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:18px;
+  }
+  .card{
+    background:var(--card); padding:14px; border-radius:12px; box-shadow: 0 6px 16px rgba(13,18,28,0.04);
+    display:flex; gap:12px; align-items:flex-start;
+  }
+  .thumb{width:120px;height:80px;border-radius:8px;background:#e6e9ef; flex-shrink:0; background-size:cover; background-position:center;}
+  .card h3{margin:0;font-size:16px;}
+  .card p{margin:6px 0 0;color:var(--muted);font-size:13px;}
+
+  .sidebar{ position:relative; top:0; }
+  .widget{background:var(--card); padding:14px; border-radius:12px; margin-bottom:14px; box-shadow: 0 6px 16px rgba(13,18,28,0.03);}
+  .small-list{display:flex;flex-direction:column;gap:10px}
+  .small-list a{display:flex;gap:10px;text-decoration:none;color:inherit}
+  .small-thumb{width:70px;height:48px;border-radius:8px;background:#e9ecef;flex-shrink:0;background-size:cover;background-position:center}
+
+  /* Footer */
+  footer{margin-top:30px;padding:28px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow: 0 6px 20px rgba(14,20,35,0.03);}
+  footer .fgrid{display:flex; gap:28px;flex-wrap:wrap;}
+  footer a{color:var(--muted); text-decoration:none; font-size:14px;}
+
+  /* Responsive adjustments */
+  @media (max-width:1100px){
+    .cards{grid-template-columns: repeat(1,1fr)}
+  }
+  @media (max-width:900px){
+    .hero, .main{grid-template-columns:1fr; }
+    .hero-image{height:200px}
+    .hero-right{ order:2 }
+    .mobile-nav{ display:none; position:absolute; top:66px; left:12px; right:12px; background:white; border-radius:12px; padding:12px; box-shadow: 0 10px 30px rgba(13,18,28,0.08);}
+  }
+  
+</style>
+</head>
+<body >  
+
+<header>
+  <div class="topbar container">
+    <a class="brand" href="#">
+      <div class="logo" aria-hidden="true">TI</div>
+      <div>
+        <div style="font-weight:800">CivicSense</div>
+        <div style="font-size:12px;color:var(--muted)">Report and Review</div>
+      </div>
+    </a>
+
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation">☰</button>
+
+    <nav id="mainNav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="report.html">Address a Query</a>
+      <a href="how-to-use.html">How to use</a>
+      <a href="cities.html">Cities</a>
+      <a href="opinion.html">Opinion</a>
+      <a href="join.html" class="cta">Join Us</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <!-- HERO -->
+  <section class="hero" aria-label="Top stories">
+    <div class="hero-left" role="region" aria-label="Featured story">
+      
+      <div class="hero-image" id="heroImage" style="background-image:url('streetproblem.jpeg')"></div>
+      <h1 class="h1">From Potholes to Policy — Understanding Street Governance</h1>
+      <div class="meta">By <strong>Team Innovators</strong>  </div>
+      <p style="margin-top:12px;color:black">
+        This platform is dedicated to addressing civic issues across the city. Residents can report problems related to:
+        <UL>
+            <li>Sewage and drainage</li>
+<li>Roads and pathways</li>
+<li>Street lighting</li></UL>
+Any other street or public utility concern
+
+If you notice any such issue in your area, please feel free to register it here. Your participation helps us resolve problems more efficiently and ensures a cleaner, safer, and better-managed city for everyone.</p>
+      <!-- <div style="margin-top:12px;display:flex;gap:10px;">
+        <a href="#" class="cta" style="padding:8px 14px">Read story</a>
+        <a href="#" style="padding:8px 12px;border-radius:10px;background:rgba(11,92,255,0.06);color:var(--accent);text-decoration:none;font-weight:700">Save</a>
+      </div> -->
+    </div>
+
+    <aside class="hero-right" role="complementary" aria-label="Subscribe & trending">
+      <div style="font-weight:800" >Stay informed</div>
+      <p style="margin-top:8px;color:var(--muted)" >Subscribe to get a updates.</p>
+      <div class="subscribe" style="margin-top:12px;">
+        <input id="email" type="email" placeholder="your@email.com" aria-label="Email address" />
+        <button id="subscribeBtn">Subscribe</button>
+        
+      </div>
+      <div class="widget">
+        <div class="widget", style="font-weight:800"align="center" ><br><br>Complain Here</div>
+        <p style="margin-top:8px;color:var(--muted)">
+        <img src="qrcode.png" height="250", width="250">
+      </p>
+      </div>
+
+    </aside>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <section class="main" aria-label="Main content and sidebar">
+    <div>
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px;">
+        <h2 style="margin:0">Recent Developments</h2>
+        <div style="margin-left:auto;color:var(--muted)">Showing <strong>4</strong> articles</div>
+      </div>
+
+      <div class="cards" id="cardsGrid" aria-live="polite">
+        <!-- Cards will be generated by JS -->
+      </div>
+
+      <div style="margin-top:16px; display:flex; justify-content:center;">
+        <button id="loadMore" style="padding:10px 14px;border-radius:10px;border:1px solid rgba(15,23,42,0.06);background:white;cursor:pointer">Load more</button>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" aria-label="Sidebar">
+      <!-- <div class="widget">
+        <div style="font-weight:800">Search</div>
+        <input id="searchBox" placeholder="Search stories..." style="width:100%;margin-top:10px;padding:10px;border-radius:8px;border:1px solid rgba(15,23,42,0.06)" />
+      </div> -->
+
+      
+
+      <!-- <div class="widget"> -->
+        <!-- <div style="font-weight:800">Newsletter</div>
+        <p style="color:var(--muted);margin-top:8px">Weekly highlights and short explainers in your inbox.</p>
+        <input placeholder="Email" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(15,23,42,0.06)" />
+        <button style="margin-top:8px;width:100%;padding:10px;border-radius:8px;border:0;background:var(--accent);color:white;font-weight:700">Subscribe</button>
+      </div> -->
+    </aside>
+  </section>
+
+  <footer>
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap">
+      <div>
+        <div style="font-weight:800">CivicSense</div>
+        <div style="color:var(--muted);margin-top:6px">News, analysis, and explainers on cities and governance.</div>
+      </div>
+      <div style="display:flex;gap:18px;align-items:center">
+        <!-- <a href="#">About</a> -->
+        <!-- <a href="#">Contact</a> -->
+        <!-- <a href="#">Privacy</a>
+        <a href="#">Terms</a> -->
+      </div>
+      <div>
+        
+        
+    </div>
+  </footer>
+  <footer>
+    <a href="#">Contact</a>
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap">
+      <div style="color:var(--muted);margin-top:6px">Ph. No. +91 123456789<br>
+        E-mail=civic2@gmail.com<br>Designed by = Comrade Innovators</div>
+      </div>
+      
+      
+    </div>
+  </footer>
+</main>
+
+<!-- Mobile nav panel -->
+<div id="mobilePanel" class="mobile-nav" style="display:none;"></div>
+
+<script>
+/* ====== Simple client-side behavior: mobile nav, cards, search, subscribe ====== */
+
+const sampleArticles = [
+  {title:"Broken and uneven roads are not just inconvenient- They are dangerous.", excerpt:"" ,img:"road.jpeg", tag:"Roads"},
+  {title:"Overflowing sewage spread disease and show cracks in civic care.",excerpt:"",  img:"Sewage.jpeg", tag:"Sewage"},
+  {title:"Dark streets invite danger- Every unlit lamp is a safety risk", excerpt:"", img:"Streetlamp.jpeg", tag:"Street Lights"},
+  {title:"Potholes damage more than vehicles- They damage lives and time.",excerpt:"",  img:"potholes.jpeg", tag:"Potholes"},
+  
+];
+
+const cardsGrid = document.getElementById('cardsGrid');
+let showing = 0;
+const PER_PAGE = 6;
+
+function renderCards(n = PER_PAGE){
+  const toShow = sampleArticles.slice(showing, showing + n);
+  toShow.forEach(a=>{
+    const card = document.createElement('article');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="thumb" style="background-image:url('${a.img}')"></div>
+      <div style="flex:1">
+        <div style="color:var(--accent);font-size:13px;font-weight:800">${a.tag}</div>
+        <h3>${a.title}</h3>
+        <p>${a.excerpt}</p>
+      </div>
+    `;
+    cardsGrid.appendChild(card);
+  });
+  showing += toShow.length;
+  if(showing >= sampleArticles.length){
+    document.getElementById('loadMore').style.display = 'none';
+  }
+}
+
+document.getElementById('loadMore').addEventListener('click', () => renderCards(PER_PAGE));
+
+renderCards(PER_PAGE);
+
+/* Mobile nav toggle */
+const mobileToggle = document.getElementById('mobileToggle');
+const mobilePanel = document.getElementById('mobilePanel');
+const mainNav = document.getElementById('mainNav');
+
+mobileToggle.addEventListener('click', () => {
+  if (mobilePanel.style.display === 'none' || mobilePanel.style.display === '') {
+    // build simple mobile menu
+    mobilePanel.innerHTML = `
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a href="#" style="font-weight:700;text-decoration:none;color:var(--accent)">Home</a>
+        <a href="#" style="text-decoration:none;color:var(--muted)">Politics</a>
+        <a href="#" style="text-decoration:none;color:var(--muted)">Economy</a>
+        <a href="#" style="text-decoration:none;color:var(--muted)">Cities</a>
+        <a href="#" style="text-decoration:none;color:var(--muted)">Opinion</a>
+        <a href="#" class="cta" style="display:inline-block;margin-top:6px">Subscribe</a>
+      </div>
+    `;
+    mobilePanel.style.display = 'block';
+  } else {
+    mobilePanel.style.display = 'none';
+  }
+});
+
+/* Search (client-only filtering) */
+const searchBox = document.getElementById('searchBox');
+searchBox.addEventListener('input', () => {
+  const q = searchBox.value.trim().toLowerCase();
+  cardsGrid.innerHTML = '';
+  showing = 0;
+  if (!q) {
+    renderCards(PER_PAGE);
+    document.getElementById('loadMore').style.display = 'inline-block';
+    return;
+  }
+  const filtered = sampleArticles.filter(a => (a.title + ' ' + a.excerpt + ' ' + a.tag).toLowerCase().includes(q));
+  filtered.forEach(a=>{
+    const card = document.createElement('article');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="thumb" style="background-image:url('${a.img}')"></div>
+      <div style="flex:1">
+        <div style="color:var(--accent);font-size:13px;font-weight:800">${a.tag}</div>
+        <h3>${a.title}</h3>
+        <p>${a.excerpt}</p>
+      </div>
+    `;
+    cardsGrid.appendChild(card);
+  });
+  document.getElementById('loadMore').style.display = 'none';
+});
+
+/* Subscribe demo (no backend) */
+document.getElementById('subscribeBtn').addEventListener('click', () => {
+  const email = document.getElementById('email').value.trim();
+  if(!email || !email.includes('@')) {
+    alert('Please enter a valid email address (demo).');
+    return;
+  }
+  alert('Thanks — this is a demo. Implement a backend to store the email.');
+});
+
+/* Accessibility: hide mobile panel when clicking outside */
+document.addEventListener('click', (e) => {
+  if(!mobilePanel.contains(e.target) && !mobileToggle.contains(e.target) && window.innerWidth <= 900){
+    mobilePanel.style.display = 'none';
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Street Issues - CivicSense</title>
+  <link rel="stylesheet" href="report.css">
+</head>
+<style>
+       body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      color: white;
+      text-align: center;
+      padding-top: 200px;
+      font-size: 2em;
+    }
+</style>
+<body >
+     <!-- Background Video -->
+  <video autoplay muted loop class="video-background">
+    <source src="final  bg video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Content Over the Video -->
+  <!-- <div class="content">
+    <h1>Welcome to My Website</h1>
+    <p>This is some content over the background video.</p>
+  </div> -->
+
+  <div class="container">
+    <!-- Left Section -->
+    <div class="left-panel">
+      <h1>Report a Street Problem</h1>
+      <p>Upload a photo of the issue and allow location access so we can pinpoint the exact spot.</p>
+      
+      <!-- Upload Box -->
+      <div class="upload-box" id="uploadBox">
+        <input type="file" id="fileInput" accept="image/*" capture="environment" hidden>
+        <div class="upload-content" onclick="document.getElementById('fileInput').click()">
+          <img src="sitelogo.jpeg" alt="Upload Icon" class="icon">
+          <p><font color="blue">Click here or Drop an image</font></p>
+          <small>JPG, PNG, WebP up to 100 MB</small>
+          <!-- <form action="submit.html" method="post">
+          <label for="name">Name:</label>
+          <input type="image" id="name" name="name" required>
+
+  <!-- Submit Button -->
+      <!-- <button type="submit" id="fileInput">Submit</button> -->
+<!-- </form> --> --> -->
+
+        </div>
+      </div>
+
+      <!-- Preview -->
+      <div id="preview" class="preview"></div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-panel">
+      <img src="google form image.jpg" alt="Civic Problem" class="side-image">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSelVb1eQDkb7DFR5s1RAe_dnnoxfN1oVM5tHR231oycTqTY_g/viewform" target="_blank" class="form-link">
+        Report via Google Form
+      </a>
+    </div>
+  </div>
+
+  <script src="report.js"></script>
+</body>
+</html>

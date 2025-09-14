@@ -1,0 +1,60 @@
+/* styles.css - starter professional style */
+:root{
+  --accent:#0b74de;
+  --muted:#6b7280;
+  --card-bg:#ffffff;
+  --page-bg:#f5f7fb;
+  --radius:10px;
+  font-family: Inter, Roboto, system-ui, Arial;
+}
+
+body {
+  margin:0;
+  background:var(--page-bg);
+  color:#111827;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* top nav */
+.topnav { display:flex; align-items:center; justify-content:space-between; padding:12px 24px; background:#fff; box-shadow:0 2px 6px rgba(16,24,40,0.04); }
+.topnav .brand { font-weight:700; color:var(--accent); text-decoration:none; font-size:18px; }
+.topnav .nav-link { text-decoration:none; color:var(--muted); margin-left:12px; }
+
+/* layout */
+.container { max-width:1200px; margin:24px auto; padding:0 16px; display:block; grid-template-columns: 1fr 320px; gap:20px; align-items:start; }
+@media (max-width:900px){ .container { grid-template-columns:1fr; } }
+
+.issues-grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(260px,1fr)); gap:16px; }
+
+/* issue card */
+.issue-card { background:var(--card-bg); border-radius:var(--radius); padding:12px; box-shadow:0 4px 12px rgba(16,24,40,0.04); display:flex; flex-direction:column; gap:8px; }
+.issue-img { width:100%; height:140px; object-fit:cover; border-radius:8px; }
+.issue-details h3 { margin:0 0 6px 0; font-size:16px; }
+.issue-details p { margin:0; color:var(--muted); font-size:13px; }
+.assign-section { display:flex; gap:8px; align-items:center; margin-top:8px; }
+.assign-select { flex:1; padding:8px; border-radius:8px; border:1px solid #e6e9ef; }
+.assign-btn { padding:8px 12px; background:var(--accent); color:white; border:none; border-radius:8px; cursor:pointer; }
+
+/* sidebar */
+.sidebar { position:sticky; top:16px; align-self:start; }
+.workers-list { list-style:none; padding:0; margin:0 0 12px 0; }
+.worker-li { background:#fff; padding:10px; border-radius:8px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(16,24,40,0.03); }
+.add-worker-form { display:flex; gap:8px; }
+.add-worker-form input { flex:1; padding:8px; border-radius:8px; border:1px solid #e6e9ef; }
+.add-worker-form button { padding:8px 12px; border-radius:8px; background:var(--accent); color:#fff; border:none; }
+
+/* workers page */
+.worker-card { background:#fff; border-radius:12px; padding:16px; margin-bottom:12px; box-shadow:0 6px 18px rgba(16,24,40,0.04); }
+.worker-card-header { display:flex; justify-content:space-between; align-items:center; }
+.task-list { margin:10px 0 0 0; padding-left:18px; }
+.task { margin-bottom:8px; }
+.no-tasks { color:var(--muted); }
+
+/* workers page layout */
+.workers-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+  gap: 20px;
+  width: 100%;
+  margin-top: 20px;
+}

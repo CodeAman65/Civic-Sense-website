@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Attractive Submit Button</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .form-box {
+      background: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .submit-btn {
+      background: linear-gradient(45deg, #00b4db, #0083b0);
+      color: white;
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 179, 219, 0.4);
+    }
+
+    .submit-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 179, 219, 0.6);
+    }
+
+    .success-message {
+      display: none;
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-box">
+    <form id="myForm">
+      <!-- Add your input fields here -->
+      <input type="text" placeholder="Enter Name" required><br><br>
+
+      <button type="submit" class="submit-btn">Submit</button>
+      <div class="success-message" id="successMessage">✅ Your request is submitted!</div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('myForm');
+    const message = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault(); // Stop form from refreshing the page
+      message.style.display = 'block';
+    });
+  </script>
+
+</body>
+</html>

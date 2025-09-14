@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Municipality Dashboard - CivicSense</title>
+  <link rel="stylesheet" href="municipality.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-text">
+      <h1>Municipality Dashboard</h1>
+      <p>"Together we build safer, cleaner, and smarter streets."</p>
+    </div>
+    <img src="sitelogo.jpeg" alt="City" class="header-img" >
+  </header>
+
+  <!-- Reported Issues -->
+  <section class="issues-section">
+    <h2>Reported Issues</h2>
+    <div id="issues-container" class="issues-container">
+      <!-- Issues will load dynamically from JS -->
+      
+    </div>
+    
+  </section>
+
+  <!-- Workers List -->
+  <section class="workers-section">
+    <h2>Registered Workers</h2>
+    <br>
+    <ul id="workers-list" class="workers-list">
+      <!-- Workers will load dynamically -->
+    </ul>
+<div class="add-worker-container">
+  <h3>Add New Worker</h3>
+  <form id="addWorkerForm">
+  <input type="text" id="newWorkerName" placeholder="Enter worker name" required />
+  <button type="submit">Add Worker</button>
+  </form>
+  <!-- <ul id="workerList"></ul> -->
+   <label for="workerList">Registered Workers</label>
+   <select id="workerList"></select>
+  </section>
+
+</div>
+
+<!-- <div>
+  <button onclick="resetTestData()">Reset Test Data</button>
+</div> -->
+
+  <script src="municipality3.js"></script>
+
+
+</body>
+</html>

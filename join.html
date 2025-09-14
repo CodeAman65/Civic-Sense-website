@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Now - CivicSense</title>
+  <link rel="stylesheet" href="join.css">
+</head>
+
+<body bgcolor="black">
+  <div class="container">
+    <div class="form-box" id="formBox">
+      <!-- Login Form -->
+      <form id="loginForm" class="form active">
+        <h2>Join Now</h2>
+        <div class="input-group">
+          <input type="email" id="loginEmail" required>
+          <label>Email</label>
+        </div>
+        <div class="input-group">
+          <input type="password" id="loginPassword" required>
+          <label>Password</label>
+        </div>
+        <button type="submit" class="btn">Sign In</button>
+        <p class="switch">
+          New user? <a href="#" id="showRegister">Register here</a>
+        </p>
+      </form>
+
+      <!-- Register Form -->
+      <form id="registerForm" class="form">
+        <h2>Create Account</h2>
+        <div class="input-group">
+          <input type="text" id="regName" required>
+          <label>Full Name</label>
+        </div>
+        <div class="input-group">
+          <input type="date" id="regDob" required>
+          <label>Date of Birth</label>
+        </div>
+        <div class="input-group">
+          <input type="email" id="regEmail" required>
+          <label>Email</label>
+        </div>
+        <div class="input-group">
+          <input type="password" id="regPassword" required>
+          <label>Set Password</label>
+          <small id="strengthMsg"></small>
+        </div>
+        <button type="submit" class="btn">Register</button>
+        <p class="switch">
+          Already have an account? <a href="#" id="showLogin">Sign In</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script src="join.js"></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image + Upload with Location</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #111;
+      display: flex;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    .left-section, .right-section {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Left section */
+    .left-section img {
+      width: 300px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .left-section img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Right section */
+    .upload-container {
+      background-color: #222;
+      border: 2px dashed #555;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      width: 300px;
+    }
+
+    .upload-container input[type="file"] {
+      margin: 10px 0;
+      background-color: #007bff;
+      padding: 10px;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .upload-container img {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    .upload-container #location {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Left Section -->
+  <div class="left-section">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSelVb1eQDkb7DFR5s1RAe_dnnoxfN1oVM5tHR231oycTqTY_g/viewform?usp=dialog" > <img src="delhi.jpeg" ></a>
+  </div>
+
+  <!-- Right Section -->
+  <div class="right-section">
+    <div class="upload-container">
+      <h3>Upload Your Photo</h3>
+      <input type="file" id="photoInput" accept="image/*">
+      <div id="previewContainer"></div>
+      <div id="location">📍 Waiting for location...</div>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const photoInput = document.getElementById("photoInput");
+    const previewContainer = document.getElementById("previewContainer");
+    const locationDiv = document.getElementById("location");
+
+    // Handle photo upload
+    photoInput.addEventListener("change", function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          previewContainer.innerHTML = <img src="${e.target.result}" alt="Uploaded Photo">;
+        };
+        reader.readAsDataURL(file);
+      }
+
+      // Get real-time device location
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            const lat = position.coords.latitude.toFixed(6);
+            const lon = position.coords.longitude.toFixed(6);
+            locationDiv.innerHTML = 📍 Device Location:<br>Latitude: ${lat}<br>Longitude: ${lon};
+          },
+          function (error) {
+            locationDiv.innerHTML = "❌ Location access denied.";
+          }
+        );
+      } else {
+        locationDiv.innerHTML = "❌ Geolocation not supported.";
+      }
+    });
+  </script>
+
+</body>
+</html>

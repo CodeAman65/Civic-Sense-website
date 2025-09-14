@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Upload Section</title>
+  <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+  <div class="upload-box">
+    <div class="upload-area" id="uploadArea">
+      <img src="sitelogo.jpeg" alt="Upload Icon" class="upload-icon">
+      <p>Drop your image, <span class="browse-text" id="browseBtn">browse</span><br>
+         or take a photo</p>
+
+      <!-- File Input -->
+      <input type="file" id="fileInput" accept="image/*" hidden>
+
+      <!-- Camera Input -->
+      <input type="file" id="cameraInput" accept="image/*" capture="environment" hidden>
+
+      <div class="buttons">
+        <button id="galleryBtn">Upload from Gallery</button>
+        <button id="cameraBtn">Take a photo</button>
+      </div>
+    </div>
+
+    <!-- Preview -->
+    <div class="preview" id="preview"></div>
+  </div>
+
+  <script src="script2.js"></script>
+</body>
+</html>

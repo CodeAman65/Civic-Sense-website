@@ -1,0 +1,135 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: url("bg-street.jpg") center/cover fixed no-repeat;
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 90%;
+  max-width: 1200px;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Left Section */
+.left-panel {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.left-panel h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #00c3ff;
+  animation: slideInLeft 1.2s ease;
+}
+
+.left-panel p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.upload-box {
+  border: 2px dashed #00c3ff;
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  background: rgba(255,255,255,0.1);
+  cursor: pointer;
+  transition: transform 0.3s, border 0.3s;
+}
+
+.upload-box:hover {
+  transform: scale(1.02);
+  border-color: #4dd0e1;
+}
+
+.icon {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+.upload-content p {
+  font-size: 16px;
+}
+
+.preview {
+  margin-top: 20px;
+}
+
+.preview img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  animation: fadeIn 1s ease;
+}
+
+.preview p {
+  font-size: 14px;
+  background: rgba(0,0,0,0.4);
+  padding: 8px;
+  border-radius: 8px;
+}
+
+/* Right Section */
+.right-panel {
+  flex: 0.8;
+  text-align: center;
+}
+
+.side-image {
+  max-width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  animation: zoomIn 1.3s ease;
+}
+
+.form-link {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #00c3ff;
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.form-link:hover {
+  background: #4dd0e1;
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes slideInLeft {
+  from {opacity: 0; transform: translateX(-50px);}
+  to {opacity: 1; transform: translateX(0);}
+}
+
+@keyframes zoomIn {
+  from {opacity: 0; transform: scale(0.8);}
+  to {opacity: 1; transform: scale(1);}
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report a Street Problem</title>
+  <link rel="stylesheet" href="report2.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Left Section -->
+    <div class="left-panel">
+      <h1>Report a Street Problem</h1>
+      <p>Upload a photo of the issue and allow location access so we can pinpoint the exact spot.</p>
+      
+      <!-- Upload Box -->
+      <div class="upload-box" id="uploadBox">
+        <input type="file" id="fileInput" accept="image/*" capture="environment" hidden>
+        <div class="upload-content" onclick="document.getElementById('fileInput').click()">
+          <img src="sitelogo.jpeg" alt="Upload Icon" class="icon">
+          <p><font color="blue">Click here or Drop an image</font></p>
+          <small>JPG, PNG, WebP up to 100 MB</small>
+        </div>
+      </div>
+
+      <!-- Preview -->
+      <div id="preview" class="preview"></div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-panel">
+      <img src="google form image.jpg" alt="Civic Problem" class="side-image">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSelVb1eQDkb7DFR5s1RAe_dnnoxfN1oVM5tHR231oycTqTY_g/viewform" target="_blank" class="form-link">
+        Report via Google Form
+      </a>
+    </div>
+  </div>
+
+  <script src="report2.js"></script>
+</body>
+</html>

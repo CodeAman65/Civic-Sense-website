@@ -1,0 +1,123 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar .logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: #004aad;
+}
+
+.navbar nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.navbar nav a.active,
+.navbar nav a:hover {
+  color: #004aad;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: #eef5ff;
+}
+
+.hero-img {
+  width: 45%;
+  border-radius: 10px;
+  margin-right: 30px;
+}
+
+.hero-text {
+  max-width: 500px;
+}
+
+.hero-text h1 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: #004aad;
+}
+
+.hero-text p {
+  font-size: 16px;
+  color: #444;
+}
+
+/* How to Use */
+.how-to-use {
+  padding: 50px 20px;
+  text-align: center;
+  background: #fff;
+}
+
+.how-to-use h2 {
+  font-size: 26px;
+  margin-bottom: 30px;
+  color: #004aad;
+}
+
+.steps {
+  max-width: 700px;
+  margin: auto;
+  text-align: left;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.step-number {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #004aad;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+.step p {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 15px;
+  background: #004aad;
+  color: white;
+  margin-top: 30px;
+}

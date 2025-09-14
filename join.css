@@ -1,0 +1,144 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: url("avhaybg.jpeg") center/cover fixed no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* opacity:0.1;  */
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.form-box {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  overflow: hidden;
+  position: relative;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Form Styling */
+.form {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  color: #fff;
+  animation: slideIn 0.8s ease forwards;
+}
+
+.form.active {
+  display: flex;
+}
+
+.form h2 {
+  text-align: center;
+  color: #00c3ff;
+  margin-bottom: 10px;
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #00c3ff;
+}
+
+.input-group label {
+  position: absolute;
+  left: 0;
+  top: 12px;
+  color: #aaa;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+  top: -10px;
+  font-size: 12px;
+  color: #00c3ff;
+}
+
+.input-group small {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+  color: #ff9800;
+}
+
+/* Buttons */
+.btn {
+  padding: 12px;
+  background: #00c3ff;
+  border: none;
+  border-radius: 8px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #4dd0e1;
+  transform: scale(1.05);
+}
+
+.switch {
+  text-align: center;
+  font-size: 14px;
+}
+
+.switch a {
+  color: #00c3ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.switch a:hover {
+  text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes slideIn {
+  from {opacity: 0; transform: scale(0.9);}
+  to {opacity: 1; transform: scale(1);}
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .form-box {
+    padding: 30px 20px;
+  }
+}

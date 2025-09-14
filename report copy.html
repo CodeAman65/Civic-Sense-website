@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Report a Street Problem</title>
+  <link rel="stylesheet" href="report copy.css" />
+</head>
+<body>
+  <div class="page">
+    <main class="card">
+      <div class="left">
+        <h1>Report a Street Problem</h1>
+        <p class="muted">Upload a photo, allow location access and optionally add a voice report and phone number so we can coordinate.</p>
+
+        <div id="uploadBox" class="upload-box">
+          <input type="file" id="fileInput" accept="image/*" capture="environment" hidden>
+          <div class="upload-content" id="uploadClick">
+            <img src="sitelogo.jpeg" alt="Upload Icon" class="icon">
+            <p><span class="linkish">Click here or drop an image</span></p>
+            <small>JPG, PNG, WebP up to 100 MB</small>
+          </div>
+        </div>
+
+        <div id="preview" class="preview" aria-hidden="true"></div>
+
+        <div class="form-row">
+          <label for="phoneInput">Phone number</label>
+          <input id="phoneInput" type="tel" placeholder="+91 98765 43210" />
+        </div>
+
+        <div class="form-row">
+          <label for="voiceText">Voice report (or type)</label>
+          <textarea id="voiceText" rows="3" placeholder="Describe the issue..."></textarea>
+          <div class="voice-controls">
+            <button id="startVoice" class="btn subtle">🎤 Start Recording</button>
+            <small id="voiceStatus" class="muted">Not recording</small>
+          </div>
+        </div>
+
+        <div class="form-row small">
+          <div id="locationDisplay" class="muted">Requesting location…</div>
+        </div>
+
+        <div class="actions">
+          <button id="submitBtn" class="btn primary">Submit Report</button>
+          <a class="btn outline" href="https://docs.google.com/forms/d/e/1FAIpQLSelVb1eQDkb7DFR5s1RAe_dnnoxfN1oVM5tHR231oycTqTY_g/viewform" target="_blank">Report via Google Form</a>
+        </div>
+      </div>
+
+      <aside class="right">
+        <img src="google form image.jpg" alt="Civic Problem" class="side-image">
+        <div class="help">
+          <h3>Tips for a good report</h3>
+          <ul>
+            <li>Take a clear close-up and a wider shot showing surroundings.</li>
+            <li>Capture nearby landmarks or house numbers if safe.</li>
+            <li>Include a phone number so workers can call if needed.</li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer muted">Powered by CivicSense • Keep our streets safe</footer>
+  </div>
+
+  <!-- Enhancement script first (so its submit listener runs before your original script) -->
+  <script src="report.enhance.js"></script>
+
+  <!-- Original report script (kept intact, renamed to .original.js to show it's unchanged) -->
+  <script src="report.js"></script>
+</body>
+</html>
