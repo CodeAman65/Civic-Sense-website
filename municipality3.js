@@ -328,8 +328,8 @@ function resetTestData() {
     alert("Test data reset!");
   }
 
-//   localStorage.clear();
-// sessionStorage.clear();
+  localStorage.clear();
+sessionStorage.clear();
 //  function assignWork(button) {
 //     const select = button.parentElement.querySelector('select');
 //     const selectedWorker = select.value;
